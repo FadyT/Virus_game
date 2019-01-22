@@ -31,28 +31,39 @@ public class PlayerMovement : MonoBehaviour
             velocity.x = -speed;
             //transform.localScale = new Vector3(-1, 1, 1);
             rotation.y = 180;
+            //transform.localScale = new Vector3( transform.localScale.x *2 , transform.localScale.y , transform.localScale.z);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             velocity.x = speed;
             rotation.y = 0;
+            //transform.localScale = new Vector3(transform.localScale.x * 2, transform.localScale.y, transform.localScale.z);
+
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             velocity.y = -speed;
             //transform.localScale = new Vector3(-1, 1, 1);
             //rotation.x = 180;
+            //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y *2, transform.localScale.z);
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
             velocity.y = speed;
             //rotation.x = 0;
+          //  transform.localScale = new Vector3(transform.localScale.x , transform.localScale.y *2 , transform.localScale.z);
 
         }
         body.velocity = velocity;
 
         transform.rotation = Quaternion.Euler(rotation);
+        /*
+        if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.localScale = new Vector3(1, 1, 1);
 
+        }
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

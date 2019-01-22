@@ -10,8 +10,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D body;
     Vector3 velocity;
     Vector3 rotation;
+    public static GameObject myPlayer;
     void Start()
     {
+        myPlayer = gameObject;
         body = GetComponent<Rigidbody2D>();
         velocity = new Vector3();
         rotation = new Vector3();

@@ -97,7 +97,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PathHolder: {fileID: 1965487025762882641}
   speed: 5
-  waitTime: 0.3
+  delay: 0.7
+  waitTime: 0.2
+  turnSpeed: 150
+  bullet: {fileID: 0}
 --- !u!1 &1965487024755803730
 GameObject:
   m_ObjectHideFlags: 0

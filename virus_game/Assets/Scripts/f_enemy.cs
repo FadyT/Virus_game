@@ -29,6 +29,8 @@ public class f_enemy : MonoBehaviour
     {
         if(collision.gameObject.name == "player")
         {
+            HealthBar.health -= 10;
+            Debug.Log( "enemy " + HealthBar.health);
             Destroy(gameObject);
 
         }

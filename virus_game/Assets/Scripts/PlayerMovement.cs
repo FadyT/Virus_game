@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        body.velocity /= 10;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             velocity.x = -speed;

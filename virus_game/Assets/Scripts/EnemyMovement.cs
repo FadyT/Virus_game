@@ -11,10 +11,11 @@ public class EnemyMovement : MonoBehaviour
     int x;
     int targetWayPointIndex;
     Vector3 targetWayPoint, dirToLookTarget;
-    float turnAngle, angle, counter;
-    public GameObject bullet;
+    float turnAngle, angle;
     Vector3[] wayPoints;
     int isPlayerDetected;//0 No 1 Yes -1 Return
+    [SerializeField]
+    int shiftRotation=90;
     void Start()
     {
         wayPoints = new Vector3[PathHolder.childCount];
@@ -35,11 +36,14 @@ public class EnemyMovement : MonoBehaviour
         //print(transform.eulerAngles);
         while (true)
         {
-            counter += Time.deltaTime;
             if (isPlayerDetected == 0)
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetWayPoint, speed * Time.deltaTime);
-                if (transform.position == targetWayPoint)
+                //print(transform.position+" "+ targetWayPoint+" "+speed);
+
+                transform.position = Vector2.MoveTowards(transform.position, targetWayPoint, 
+                    speed * Time.deltaTime);
+
+                if (Vector2.Distance( transform.position , targetWayPoint)<=.1f)
                 {
                     //Debug.Log(transform.position + "  " + targetWayPoint);
                     targetWayPointIndex = (targetWayPointIndex + 1) % wayPoints.Length;
@@ -51,43 +55,40 @@ public class EnemyMovement : MonoBehaviour
             yield return null;
         }
     }
+
     IEnumerator TurnFace(Vector3 lockTarget)
     {
         dirToLookTarget = (lockTarget - transform.position).normalized;
-        turnAngle = 90 - Mathf.Atan2(dirToLookTarget.y, dirToLookTarget.x) * Mathf.Rad2Deg;
-        while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, turnAngle)) > .05f)
+        turnAngle = shiftRotation + Mathf.Atan2(dirToLookTarget.y, dirToLookTarget.x) * Mathf.Rad2Deg;
+
+        while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, turnAngle)) > .1f)
         {
             angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z, turnAngle, turnSpeed * Time.deltaTime);
             transform.eulerAngles = Vector3.forward * angle;
-            print(transform.eulerAngles);
 
             yield return null;
         }
+
         isPlayerDetected = 0;
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
-        if (PlayerMovement.myPlayer != null && (PlayerMovement.myPlayer.transform.position - transform.position).magnitude < 18)
+        if (PlayerMovement.myPlayer != null && (PlayerMovement.myPlayer.transform.position - transform.position).magnitude < distance)
         {
             isPlayerDetected = 1;
             //transform.LookAt(PlayerMovement.myPlayer.transform.position);
-            //if ((PlayerMovement.myPlayer.transform.position - transform.position).magnitude > 8)
+            transform.rotation = Quaternion.Euler(0, 0, AngleBetweenVector2(transform.position, PlayerMovement.myPlayer.transform.position) + shiftRotation + 90);
+            if ((PlayerMovement.myPlayer.transform.position - transform.position).magnitude > 0)
             {
-                transform.position = Vector3.MoveTowards(transform.position, PlayerMovement.myPlayer.transform.position, speed * Time.deltaTime * 2);
+                transform.position = Vector2.MoveTowards(transform.position, PlayerMovement.myPlayer.transform.position, speed * Time.deltaTime * 2);
             }
-            //Vector3.MoveTowards(transform.position,)
-            /*if (counter > delay && PlayerMovement.myPlayer != null)
-            {
-                print("ok");
-                /////////Instantiate(bullet, transform.position, transform.rotation);
-                counter = 0;
-            }*/
+            
         }
         else if (isPlayerDetected == 1)
         {
             isPlayerDetected = -1;
-            //StartCoroutine(TurnFace(targetWayPoint));
+            StartCoroutine(TurnFace(targetWayPoint));
         }
     }
 
@@ -113,7 +114,19 @@ public class EnemyMovement : MonoBehaviour
             previosPosition = t.position;
         }
         Gizmos.DrawLine(previosPosition, PathHolder.GetChild(0).position);
-
+        Gizmos.color = Color.blue /5;
+        Gizmos.DrawSphere(transform.position, distance);
     }
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //health
+        Destroy(collision.gameObject);
+        
+    }
+    private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
+    {
+        Vector2 diference = vec2 - vec1;
+        float sign = (vec2.y < vec1.y) ? -1.0f : 1.0f;
+        return Vector2.Angle(Vector2.right, diference) * sign - 90;
+    }
 }

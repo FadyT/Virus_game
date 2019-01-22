@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     Vector3 rotation;
     public static GameObject myPlayer;
-    void Start()
+    void Awake ()
     {
         myPlayer = gameObject;
         body = GetComponent<Rigidbody2D>();

@@ -5,10 +5,13 @@ using UnityEngine;
 public class f_enemy : MonoBehaviour
 {
     public float speed = 3 ;
-    public GameObject target;
+    GameObject target;
 
     private bool isDetected = false;
-    
+    private void Start()
+    {
+        target = PlayerMovement.myPlayer;
+    }
     // Update is called once per frame
     void Update()
     {

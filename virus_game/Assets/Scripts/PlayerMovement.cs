@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -10,7 +11,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D body;
     Vector3 velocity;
     Vector3 rotation;
+
     public static GameObject myPlayer;
+
+
     void Awake ()
     {
         myPlayer = gameObject;
@@ -48,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = velocity;
 
         transform.rotation = Quaternion.Euler(rotation);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -69,12 +74,19 @@ public class PlayerMovement : MonoBehaviour
 
             case "Heart":
                 Debug.Log("collision heart ");
-                if (HealthBar.health <100)
+                if (HealthBar.health < 100)
                 {
                     HealthBar.health += 10;
                     Debug.Log("enemy " + HealthBar.health);
                     Destroy(collision.gameObject);
                 }
+                break;
+
+
+            case "collectable":
+                Debug.Log("collision collectable ");
+                scoreScript.score += 10;
+                Destroy(collision.gameObject);
                 break;
 
 

@@ -47,4 +47,16 @@ public class PlayerMovement : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(rotation);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.name);
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("collision enter ");
+
+    }
 }

@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
     int targetWayPointIndex;
     Vector3 targetWayPoint;
     Vector3[] wayPoints;
+
 	void Start () {
          wayPoints= new Vector3[PathHolder.childCount];
         for (int i=0;i<wayPoints.Length;i++)
@@ -23,7 +24,8 @@ public class EnemyMovement : MonoBehaviour
         targetWayPoint = wayPoints[targetWayPointIndex];
         StartCoroutine(FollowPath());
 	}
-	IEnumerator FollowPath()
+
+    IEnumerator FollowPath()
     {
         //print("ok");
         while(true)

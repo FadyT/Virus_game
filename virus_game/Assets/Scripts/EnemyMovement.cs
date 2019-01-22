@@ -117,12 +117,7 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.color = Color.blue /5;
         Gizmos.DrawSphere(transform.position, distance);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //health
-        Destroy(collision.gameObject);
-        
-    }
+  
     private float AngleBetweenVector2(Vector2 vec1, Vector2 vec2)
     {
         Vector2 diference = vec2 - vec1;

@@ -52,13 +52,67 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
+        switch (collision.gameObject.name)
+        {
+            case "enemy":
+                Debug.Log("collision enemy ");
+                Destroy(this.gameObject);
+                HealthBar.health = 0;
+                break;
+
+            case "Enemy2":
+                Debug.Log("collision enemy2 ");
+                HealthBar.health -= 10;
+                Debug.Log("enemy " + HealthBar.health);
+                Destroy(collision.gameObject);
+                break;
+
+            case "Heart":
+                Debug.Log("collision heart ");
+                if (HealthBar.health <100)
+                {
+                    HealthBar.health += 10;
+                    Debug.Log("enemy " + HealthBar.health);
+                    Destroy(collision.gameObject);
+                }
+                break;
+
+
+            default:
+                Debug.Log("collision " + collision.gameObject.name);
+                break;
+        }
 
     }
-
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision enter ");
 
+        switch (collision.gameObject.name)
+        {
+            case "Enemy":
+                Debug.Log("collision enemy ");
+                break;
+
+            case "Enemy2":
+                Debug.Log("collision enemy2 ");
+                HealthBar.health -= 10;
+                Debug.Log("enemy " + HealthBar.health);
+                Destroy(collision.gameObject);
+                break;
+
+            case "Heart":
+                Debug.Log("collision heart ");
+                HealthBar.health += 10;
+                Debug.Log("enemy " + HealthBar.health);
+                break;
+
+
+            default:
+                Debug.Log("collision " + collision.gameObject.name);
+                break;
+        }
+        
     }
+*/
 }

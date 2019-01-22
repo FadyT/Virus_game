@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        velocity /= 10;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             velocity.x = -speed;
@@ -30,19 +31,20 @@ public class PlayerMovement : MonoBehaviour
             velocity.x = speed;
             rotation.y = 0;
         }
-        body.velocity = velocity;
         if (Input.GetKey(KeyCode.DownArrow))
         {
             velocity.y = -speed;
             //transform.localScale = new Vector3(-1, 1, 1);
-            rotation.x = 180;
+            //rotation.x = 180;
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
             velocity.y = speed;
-            rotation.x = 0;
+            //rotation.x = 0;
 
         }
+        body.velocity = velocity;
+
         transform.rotation = Quaternion.Euler(rotation);
     }
 }

@@ -90,8 +90,9 @@ public class PlayerMovement : MonoBehaviour
                 {
                     HealthBar.health += 10;
                     Debug.Log("enemy " + HealthBar.health);
-                    Destroy(collision.gameObject);
                 }
+                Destroy(collision.gameObject);
+
                 break;
 
 

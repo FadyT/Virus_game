@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 75d67c373f797f647930a5e9398eadb6
+guid: 4160a61e95243b540abf1499d9a4070f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: BUTTONS-02_0
+    21300000: Exit
     21300002: BUTTONS-02_1
     21300004: BUTTONS-02_2
-    21300006: BUTTONS-02_3
+    21300006: Audio
     21300008: BUTTONS-02_4
     21300010: BUTTONS-02_5
     21300012: BUTTONS-02_6
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -81,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -92,7 +92,29 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,7 +124,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BUTTONS-02_0
+      name: Exit
       rect:
         serializedVersion: 2
         x: 32
@@ -116,27 +138,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acb412f2b3504864fb7c2dfe68b70cd1
+      spriteID: 63cad3c178da1034db98f35450d0b06a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BUTTONS-02_3
+      name: Audio
       rect:
         serializedVersion: 2
-        x: 260
+        x: 256
         y: 49
-        width: 212
-        height: 162
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 223
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a59255346bfcafd4e95c4b170914e3bf
+      spriteID: 74aad9b76e6fe1a42aae1fe535a3ffb7
       vertices: []
       indices: 
       edges: []
@@ -144,7 +166,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c99a03153e9488c4a9c3e560f32d2ba5
+    spriteID: d3ee0a12259a1f6459c0d81b6e044a08
     vertices: []
     indices: 
     edges: []

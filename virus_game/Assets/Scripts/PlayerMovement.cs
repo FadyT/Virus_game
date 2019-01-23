@@ -79,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
             case "Enemy2":
                 Debug.Log("collision enemy2 ");
                 HealthBar.health -= 10;
+                powerBarScript.power += 10;
                 Debug.Log("enemy " + HealthBar.health);
                 Destroy(collision.gameObject);
                 break;
